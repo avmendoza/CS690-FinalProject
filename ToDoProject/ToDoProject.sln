@@ -3,6 +3,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Tests", "ToDo.Tests\ToDo.Tests.csproj", "{3A1E7FC7-EC89-475A-B45A-3CADCCAB106F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo", "ToDo\ToDo.csproj", "{602E8926-A463-455A-82FC-C38E52988F06}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +14,15 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A1E7FC7-EC89-475A-B45A-3CADCCAB106F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A1E7FC7-EC89-475A-B45A-3CADCCAB106F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A1E7FC7-EC89-475A-B45A-3CADCCAB106F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A1E7FC7-EC89-475A-B45A-3CADCCAB106F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{602E8926-A463-455A-82FC-C38E52988F06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{602E8926-A463-455A-82FC-C38E52988F06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{602E8926-A463-455A-82FC-C38E52988F06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{602E8926-A463-455A-82FC-C38E52988F06}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
