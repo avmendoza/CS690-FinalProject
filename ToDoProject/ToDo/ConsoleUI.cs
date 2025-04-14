@@ -21,6 +21,7 @@ public class ConsoleUI{
 
             List<string> toDoList = new List<string>();
             List<string> eventList = new List<string>();
+            List<string> toDoCompleted = new List<string>();
 
             name = AskforInput("What is your name?");
 
@@ -31,12 +32,10 @@ public class ConsoleUI{
                 if(menuNum == 1)
                 {     
                     do{
-                      
-                        //toDo =  AskforInput("Enter your To Do items.  Please enter 'END' to finish");
                         
                         toDo = AnsiConsole.Prompt(
                                     new SelectionPrompt<string>()
-                                    .Title("Select your To Do items")
+                                    .Title("Select your To Do items and hit Enter.  Select END to Finish")
                                     .PageSize(10)
                                     .MoreChoicesText("[grey](See To Dos)[/]")
                                     .AddChoices(new[] {
@@ -62,11 +61,9 @@ public class ConsoleUI{
                  
                  do{
                     
-                    //agenda = AskforInput("What events did you do today?  Please enter 'END' to finish");
-                    
                     agenda = AnsiConsole.Prompt(
                                     new SelectionPrompt<string>()
-                                    .Title("Select your Agenda items")
+                                    .Title("Select your Agenda items and hit Enter. Select END to finish.")
                                     .PageSize(10)
                                     .MoreChoicesText("[blue](Actual Events)[/]")
                                     .AddChoices(new[] {
@@ -95,11 +92,18 @@ public class ConsoleUI{
                     foreach(string item in toDoList){
                          if(eventList.Contains(item)){
                          toDoCounter+= 1;
+                         toDoCompleted.Add(item);
                         }
                     }
 
                     efficiencyPercentage = Math.Round(toDoCounter / numtoDoItems * 100, 2); 
                 
+                    Console.WriteLine("Completed To Do items:");
+
+                    foreach(string item in toDoCompleted){
+                        Console.WriteLine($" {item}");
+                    }
+
                     Console.WriteLine($"You completed {toDoCounter} of {numtoDoItems} items on your To Do List.\nYour efficiency percentage is {efficiencyPercentage} %.");  
 
                 }
