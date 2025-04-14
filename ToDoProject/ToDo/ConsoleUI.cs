@@ -1,5 +1,7 @@
 namespace ToDo;
 
+using Spectre.Console;
+
 public class ConsoleUI{
         FileSaver fileSaver;
 
@@ -24,20 +26,32 @@ public class ConsoleUI{
 
             do{
              
-             menuNum = int.Parse(AskforInput($"Hello, {name}! Please choose a number from the menu.\n 1: To Do Log\n 2: Event Log\n 3: To Do Analysis\n 4: Exit"));
+            menuNum = int.Parse(AskforInput($"Hello, {name}! Please choose a number from the menu.\n 1: To Do Log\n 2: Event Log\n 3: To Do Analysis\n 4: Exit"));
 
                 if(menuNum == 1)
                 {     
                     do{
                       
-                        toDo =  AskforInput("Enter your To Do items.  Please enter 'END' to finish");
+                        //toDo =  AskforInput("Enter your To Do items.  Please enter 'END' to finish");
+                        
+                        toDo = AnsiConsole.Prompt(
+                                    new SelectionPrompt<string>()
+                                    .Title("Select your To Do items")
+                                    .PageSize(10)
+                                    .MoreChoicesText("[grey](See To Dos)[/]")
+                                    .AddChoices(new[] {
+                                    "eat", "sleep", "workout", 
+                                    "run errands", "call Mom", "pay bills",
+                                    "study", "other", "END",
+        }));
+                        
                         toDoList.Add(toDo);
 
                     } while(toDo != "END");
 
                  toDoList.Remove("END");
 
-                 foreach (string todo in toDoList){ 
+                    foreach (string todo in toDoList){
                         fileSaver.AppendLine(todo);
                     }
                 } 
@@ -48,7 +62,20 @@ public class ConsoleUI{
                  
                  do{
                     
-                    agenda = AskforInput("What events did you do today?  Please enter 'END' to finish");
+                    //agenda = AskforInput("What events did you do today?  Please enter 'END' to finish");
+                    
+                    agenda = AnsiConsole.Prompt(
+                                    new SelectionPrompt<string>()
+                                    .Title("Select your Agenda items")
+                                    .PageSize(10)
+                                    .MoreChoicesText("[blue](Actual Events)[/]")
+                                    .AddChoices(new[] {
+                                    "eat", "sleep", "workout", 
+                                    "run errands", "call Mom", "pay bills",
+                                    "study", "other", "END",
+        }));
+                    
+                    
                     eventList.Add(agenda);
 
                  } while(agenda != "END");
