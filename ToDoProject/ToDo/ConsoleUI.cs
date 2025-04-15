@@ -39,9 +39,9 @@ public class ConsoleUI{
                                     .PageSize(10)
                                     .MoreChoicesText("[grey](See To Dos)[/]")
                                     .AddChoices(new[] {
-                                    "eat", "sleep", "workout", 
-                                    "run errands", "call Mom", "pay bills",
-                                    "study", "other", "END",
+                                    "Eat", "Sleep", "Workout", 
+                                    "Run errands", "Pay bills",
+                                    "Study CS", "Other", "END",
         }));
                         
                         toDoList.Add(toDo);
@@ -67,9 +67,9 @@ public class ConsoleUI{
                                     .PageSize(10)
                                     .MoreChoicesText("[blue](Actual Events)[/]")
                                     .AddChoices(new[] {
-                                    "eat", "sleep", "workout", 
-                                    "run errands", "call Mom", "pay bills",
-                                    "study", "other", "END",
+                                    "Eat", "Sleep", "Workout", 
+                                    "Run errands", "Social Media", "Pay bills",
+                                    "Study CS", "Other", "Internet Surfing", "END",
         }));
                     
                     
@@ -87,7 +87,7 @@ public class ConsoleUI{
                     toDoCounter = 0;
                     numtoDoItems = toDoList.Count;
 
-                    Console.WriteLine("This is how efficient you were today"); 
+                    Console.WriteLine("This is how efficient you were today!"); 
 
                     foreach(string item in toDoList){
                          if(eventList.Contains(item)){
@@ -105,6 +105,7 @@ public class ConsoleUI{
                     }
 
                     Console.WriteLine($"You completed {toDoCounter} of {numtoDoItems} items on your To Do List.\nYour efficiency percentage is {efficiencyPercentage} %.");  
+                    Console.WriteLine("\n");
 
                 }
 
