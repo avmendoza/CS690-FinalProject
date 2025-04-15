@@ -1,7 +1,5 @@
 namespace ToDo;
 
-using Spectre.Console;
-
 public class ConsoleUI{
         FileSaver fileSaver;
 
@@ -33,16 +31,7 @@ public class ConsoleUI{
                 {     
                     do{
                         
-                        toDo = AnsiConsole.Prompt(
-                                    new SelectionPrompt<string>()
-                                    .Title("Select your To Do items and hit Enter.  Select END to Finish")
-                                    .PageSize(10)
-                                    .MoreChoicesText("[grey](See To Dos)[/]")
-                                    .AddChoices(new[] {
-                                    "Eat", "Sleep", "Workout", 
-                                    "Run errands", "Pay bills",
-                                    "Study CS", "Other", "END",
-        }));
+                        toDo = AskforInput("Enter your To Do Items:");
                         
                         toDoList.Add(toDo);
 
@@ -61,16 +50,7 @@ public class ConsoleUI{
                  
                  do{
                     
-                    agenda = AnsiConsole.Prompt(
-                                    new SelectionPrompt<string>()
-                                    .Title("Select your Agenda items and hit Enter. Select END to finish.")
-                                    .PageSize(10)
-                                    .MoreChoicesText("[blue](Actual Events)[/]")
-                                    .AddChoices(new[] {
-                                    "Eat", "Sleep", "Workout", 
-                                    "Run errands", "Social Media", "Pay bills",
-                                    "Study CS", "Other", "Internet Surfing", "END",
-        }));
+                    agenda =  AskforInput("Enter your Event Items:");;
                     
                     
                     eventList.Add(agenda);
