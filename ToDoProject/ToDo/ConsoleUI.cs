@@ -11,16 +11,13 @@ public class ConsoleUI{
             
             string name;
             int menuNum;
-            double toDoCounter;
-            double numtoDoItems;
-            double efficiencyPercentage;
             string toDo;
             string agenda;
-
+            
             List<string> toDoList = new List<string>();
             List<string> eventList = new List<string>();
             List<string> toDoCompleted = new List<string>();
-
+        
             name = AskforInput("What is your name?");
 
             do{
@@ -37,7 +34,7 @@ public class ConsoleUI{
 
                     } while(toDo != "END");
 
-                 toDoList.Remove("END");
+                    toDoList.Remove("END");
 
                     foreach (string todo in toDoList){
                         fileSaver.AppendLine(todo);
@@ -52,46 +49,32 @@ public class ConsoleUI{
                     
                     agenda =  AskforInput("Enter your Event Items:");;
                     
-                    
                     eventList.Add(agenda);
 
                  } while(agenda != "END");
 
                  eventList.Remove("END");
 
-                 }
+                 foreach(string item in toDoList){
+                        if(eventList.Contains(item)){
+                            toDoCompleted.Add(item);
+                        }
+                    }       
+
+                }
 
                 else if(menuNum == 3)
                 {
      
-                    toDoCounter = 0;
-                    numtoDoItems = toDoList.Count;
-
-                    Console.WriteLine("This is how efficient you were today!"); 
-
-                    foreach(string item in toDoList){
-                         if(eventList.Contains(item)){
-                         toDoCounter+= 1;
-                         toDoCompleted.Add(item);
-                        }
-                    }
-
-                    efficiencyPercentage = Math.Round(toDoCounter / numtoDoItems * 100, 2); 
-                
-                    Console.WriteLine("Completed To Do items:");
-
-                    foreach(string item in toDoCompleted){
-                        Console.WriteLine($" {item}");
-                    }
-
-                    Console.WriteLine($"You completed {toDoCounter} of {numtoDoItems} items on your To Do List.\nYour efficiency percentage is {efficiencyPercentage} %.");  
-                    Console.WriteLine("\n");
+                    Reporter r = new Reporter(toDoList, eventList, toDoCompleted);
+                    r.CompletedItems();
+                    r.EfficiencyPercentage(); 
 
                 }
+                
+            } while (menuNum != 4); 
 
-                } while (menuNum != 4); 
-
-            }
+        }
 
         public static string AskforInput(string message){
             Console.WriteLine(message);
