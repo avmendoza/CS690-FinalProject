@@ -11,11 +11,10 @@ public class ConsoleUI{
             
             string name;
             int menuNum;
-            string toDo;
             string agenda;
             
-            List<string> toDoList = new List<string>();
-            List<string> eventList = new List<string>();
+            List<string> TODO = new List<string>();
+            List<string> EVENT = new List<string>();
             List<string> toDoCompleted = new List<string>();
         
             name = AskforInput("What is your name?");
@@ -23,40 +22,25 @@ public class ConsoleUI{
             do{
              
             menuNum = int.Parse(AskforInput($"Hello, {name}! Please choose a number from the menu.\n 1: To Do Log\n 2: Event Log\n 3: To Do Analysis\n 4: Exit"));
+            DataManager databuild = new DataManager(TODO, EVENT);
 
                 if(menuNum == 1)
                 {     
-                    do{
-                        
-                        toDo = AskforInput("Enter your To Do Items:");
-                        
-                        toDoList.Add(toDo);
-
-                    } while(toDo != "END");
-
-                    toDoList.Remove("END");
-
-                    foreach (string todo in toDoList){
+                    TODO = databuild.ToDoBuilder();
+                    
+                    foreach (string todo in TODO){
                         fileSaver.AppendLine(todo);
                     }
+
                 } 
                 
-
                 else if(menuNum == 2)
                 {
                  
-                 do{
-                    
-                    agenda =  AskforInput("Enter your Event Items:");;
-                    
-                    eventList.Add(agenda);
-
-                 } while(agenda != "END");
-
-                 eventList.Remove("END");
-
-                 foreach(string item in toDoList){
-                        if(eventList.Contains(item)){
+                    EVENT = databuild.EventBuilder();
+                 
+                    foreach(string item in TODO){
+                        if(EVENT.Contains(item)){
                             toDoCompleted.Add(item);
                         }
                     }       
@@ -66,7 +50,7 @@ public class ConsoleUI{
                 else if(menuNum == 3)
                 {
      
-                    Reporter r = new Reporter(toDoList, eventList, toDoCompleted);
+                    Reporter r = new Reporter(TODO, EVENT, toDoCompleted);
                     r.CompletedItems();
                     r.EfficiencyPercentage(); 
 
