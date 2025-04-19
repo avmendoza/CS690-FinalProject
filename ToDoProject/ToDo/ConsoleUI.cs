@@ -1,5 +1,7 @@
 namespace ToDo;
 
+using Spectre.Console;
+
 public class ConsoleUI{
         FileSaver fileSaver;
 
@@ -10,6 +12,7 @@ public class ConsoleUI{
         public void Show(){
             
             string name;
+            string menuChoice;
             int menuNum;
             string agenda;
             
@@ -21,7 +24,17 @@ public class ConsoleUI{
 
             do{
              
-            menuNum = int.Parse(AskforInput($"Hello, {name}! Please choose a number from the menu.\n 1: To Do Log\n 2: Event Log\n 3: To Do Analysis\n 4: Exit"));
+            menuChoice = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                        .Title($"{name}, choose a number[green] from the menu[/]")
+                         .PageSize(10)
+                           .MoreChoicesText("[grey](Move up and down to reveal more To Dos)[/]")
+                        .AddChoices(new[] {
+                        "1: To Do Log", "2: Event Log", "3: To Do Analysis", 
+                    "4: Exit",  
+                      }));
+            
+            menuNum = int.Parse(menuChoice.Substring(0,1));
             DataManager databuild = new DataManager(TODO, EVENT);
 
                 if(menuNum == 1)
@@ -51,8 +64,10 @@ public class ConsoleUI{
                 {
      
                     Reporter r = new Reporter(TODO, EVENT, toDoCompleted);
+                    r.CreateTable();
                     r.CompletedItems();
                     r.EfficiencyPercentage(); 
+                    
 
                 }
                 

@@ -1,5 +1,7 @@
 namespace ToDo;
 
+using Spectre.Console;
+
 public class DataManager {
         
         string toDo;
@@ -27,19 +29,25 @@ public class DataManager {
 
              do{
                         
-                    toDo = AskforInput("Enter your To Do Items:");
-                        
-                        toDoList.Add(toDo);
+                    toDo = AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                        .Title("What are your To Dos[green][/]?")
+                         .PageSize(10)
+                           .MoreChoicesText("[grey](Move up and down to reveal more To Dos)[/]")
+                        .AddChoices(new[] {
+                        "Eat", "Sleep", "Study CS", 
+                    "Exercise", "Walk Dog", "Do Dishes",
+                    "END",
+                      }));
 
-                    finish = AskforInput("Are you finished? [y / n]");
+                    toDoList.Add(toDo);
                     
-                    if (finish == "y"){
-                        toDo = "END";
-                    }
+
 
                 } while(toDo != "END");
 
                 toDoList.Remove("END");
+               
 
                 return toDoList;
 
@@ -49,15 +57,18 @@ public class DataManager {
 
              do{
                     
-                    agenda =  AskforInput("Enter your Agenda Items:");
+                    agenda =  AnsiConsole.Prompt(
+                        new SelectionPrompt<string>()
+                        .Title("What are your Agenda Items[green][/]?")
+                         .PageSize(10)
+                           .MoreChoicesText("[grey](Move up and down to reveal more To Dos)[/]")
+                        .AddChoices(new[] {
+                        "Eat", "Sleep", "Study CS", 
+                    "Exercise", "Walk Dog", "Do Dishes", "Social Media",
+                    "Internet Shopping", "Watching TV", "END",
+                      }));
                     
                     eventList.Add(agenda);
-
-                    finish = AskforInput("Are you finished? [y / n]");
-                    
-                    if (finish == "y"){
-                        agenda = "END";
-                    }
 
                  } while(agenda != "END");
 
