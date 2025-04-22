@@ -14,7 +14,6 @@ public class ConsoleUI{
             string name;
             string menuChoice;
             int menuNum;
-            string agenda;
             
             List<string> TODO = new List<string>();
             List<string> EVENT = new List<string>();
@@ -75,6 +74,7 @@ public class ConsoleUI{
 
         }
 
+        //function to refactor reading of user input
         public static string AskforInput(string message){
             Console.WriteLine(message);
             return Console.ReadLine();
