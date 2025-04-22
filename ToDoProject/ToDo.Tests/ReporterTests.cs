@@ -29,4 +29,12 @@ public class ReporterTests
         Assert.Equal(50, calc);
 
     }
+
+     [Fact]
+    public void Test_CompletedItems()
+    {
+        double completecount = reporter.CompletedItems();
+        Assert.Equal(2, completecount);
+
+    }
 }

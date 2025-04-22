@@ -53,6 +53,7 @@ public class DataManager {
 
         }
 
+      //method to create List of events
         public List<string> EventBuilder(){
 
              do{

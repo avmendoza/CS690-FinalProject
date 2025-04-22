@@ -32,10 +32,10 @@ public class Reporter{
             numCompleteToDo = toDoCompleted.Count;
 
             efficiencyPercentage = Math.Round(numCompleteToDo / numtoDoItems * 100, 2);    
-            Console.WriteLine($"Your productivity percentage is {efficiencyPercentage} %.");
+            Console.WriteLine($"Your productivity percentage is {efficiencyPercentage}%.");
             
             if (efficiencyPercentage < 50) {
-                Console.WriteLine("OK! You can do better.");
+                Console.WriteLine("OK! You can do better!");
             }
 
             else if((efficiencyPercentage > 50) && (efficiencyPercentage < 75)){
@@ -51,7 +51,7 @@ public class Reporter{
         }
 
         //method to state number of completed To Dos vs To Do List
-        public void CompletedItems(){
+        public double CompletedItems(){
 
             numtoDoItems = toDoList.Count;
             toDoCompleteCounter = toDoCompleted.Count;
@@ -62,7 +62,9 @@ public class Reporter{
 
                 foreach(string item in toDoCompleted){
                         Console.WriteLine($" {item}");
-                }    
+                } 
+
+            return toDoCompleteCounter;   
                   
          }
 
