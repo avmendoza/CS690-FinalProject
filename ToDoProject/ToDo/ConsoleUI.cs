@@ -67,7 +67,6 @@ public class ConsoleUI{
                     r.CompletedItems();
                     r.EfficiencyPercentage(); 
                     
-
                 }
                 
             } while (menuNum != 4); 
