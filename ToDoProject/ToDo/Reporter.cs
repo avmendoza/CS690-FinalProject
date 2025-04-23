@@ -4,7 +4,7 @@ using Spectre.Console;
 
 public class Reporter{
         
-        double toDoCompleteCounter = 0;
+        double toDoCompleteCounter;
         double numtoDoItems;
         double numCompleteToDo;
         double efficiencyPercentage;
@@ -16,7 +16,7 @@ public class Reporter{
         //constructor
         public Reporter(List<string> toDoList, List<string> eventList, List<string> toDoCompleted) {
 
-            this. toDoCompleteCounter = toDoCompleteCounter;
+            this.toDoCompleteCounter = toDoCompleteCounter;
             this.numtoDoItems = numtoDoItems;
             this.toDoList = toDoList;
             this.eventList = eventList;

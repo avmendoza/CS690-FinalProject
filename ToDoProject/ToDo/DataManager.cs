@@ -41,8 +41,10 @@ public class DataManager {
                       }));
 
                     toDoList.Add(toDo);
-                    
-
+            
+                    if (toDo != "END"){
+                      Console.WriteLine($"{toDo} added to To Do List.\n"); 
+                    } 
 
                 } while(toDo != "END");
 
@@ -70,6 +72,14 @@ public class DataManager {
                       }));
                     
                     eventList.Add(agenda);
+
+                    if (agenda != "END"){
+                    Console.WriteLine($"{agenda} added to Agenda.\n");
+                    }
+
+                    if(toDoList.Contains(agenda)){
+                      Console.WriteLine($"Great, {agenda} is one of your To Do items!\n");
+                    }
 
                  } while(agenda != "END");
 
